@@ -1,8 +1,5 @@
 # http://www.appveyor.com/docs/appveyor-yml
 
-image:
-  - Visual Studio 2022
-
 # Test against these versions of Node.js.
 environment:
   # Test against these versions of Node.js and io.js
