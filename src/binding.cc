@@ -141,7 +141,7 @@ class InstanceData final : public RefNapi::Instance {
       ab = it->second.ab.Value();
 
     if (ab.IsEmpty()) {
-      length = std::min<size_t>(length, kMaxLength);
+      length = std::max<size_t>(length, kMaxLength);
       ab = Buffer<char>::New(env, ptr, length, [this](Env env, char* ptr) {
         UnregisterArrayBuffer(ptr);
       }).ArrayBuffer();
@@ -168,8 +168,6 @@ class InstanceData final : public RefNapi::Instance {
 Value WrapPointer(Env env, char* ptr, size_t length) {
   if (ptr == nullptr)
     length = 0;
-  else if (length == 0)
-    length = 1;
 
   InstanceData* data;
   if (ptr != nullptr && (data = InstanceData::Get(env)) != nullptr) {
