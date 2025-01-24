@@ -24,7 +24,7 @@
     "64",
     "napi"
   ],
-  "version": "4.0.12",
+  "version": "4.0.13",
   "license": "MIT",
   "author": "Anna Henningsen <anna@addaleax.net>",
   "repository": {
@@ -39,20 +39,33 @@
     "prebuild": "prebuildify --napi --tag-armv"
   },
   "dependencies": {
-    "debug": "^4.1.1",
+    "debug": "^4.4.0",
     "get-symbol-from-current-process-h": "^1.0.2",
-    "node-addon-api": "^3.0.0",
+    "node-addon-api": "^8.3.0",
     "node-gyp-build": "^4.2.1"
   },
   "devDependencies": {
+    "@semantic-release/commit-analyzer": "^11.1.0",
+    "@semantic-release/github": "^9.2.6",
+    "@semantic-release/npm": "^11.0.2",
+    "dox": "1.0.0",
     "dox": "0.9.0",
     "highlight.js": "^10.0.0",
     "jade": "^1.11.0",
+    "node-gyp": "^10.0.1",
     "marked": "^1.0.0",
     "mocha": "^7.1.1",
     "nyc": "^15.0.0",
-    "prebuildify": "^3.0.4",
+    "prebuildify": "^5.0.1",
     "prebuildify-ci": "^1.0.5",
+    "semantic-release": "^22.0.12",
     "weak-napi": "^2.0.0"
-  }
+  },
+  "files": [
+    "prebuilds/",
+    "src/",
+    "lib/",
+    "include/",
+    "binding.gyp"
+  ]
 }
