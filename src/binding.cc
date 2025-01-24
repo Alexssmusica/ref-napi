@@ -2,6 +2,9 @@
 #include <string.h>
 #include <errno.h>
 #include <unordered_map>
+#include <cstdint>
+#include <string>
+#include <memory>
 
 #include "ref-napi.h"
 
@@ -55,6 +58,9 @@ class PointerBuffer : public ObjectWrap<PointerBuffer> {
  public:
   static Object Init(Napi::Env env, Object exports);
   PointerBuffer(Napi::CallbackInfo& info);
+  ~PointerBuffer() {
+    // Cleanup if needed
+  }
   Napi::Value IsNull(const Napi::CallbackInfo &info);
   Napi::Value Address(const Napi::CallbackInfo &info);
   Napi::Value Length(const Napi::CallbackInfo &info);
@@ -660,8 +666,14 @@ Value ReinterpretBufferUntilZeros(const CallbackInfo& args) {
 } // anonymous namespace
 
 Object Init(Env env, Object exports) {
+#if NAPI_VERSION > 5
   InstanceData* data = new InstanceData(env);
   env.SetInstanceData<InstanceData>(data);
+#else
+  InstanceData* data = new InstanceData(env);
+  // Store instance data differently for older versions
+  exports.Set("_instanceData", External<InstanceData>::New(env, data));
+#endif
 
   exports["instance"] = External<RefNapi::Instance>::New(env, data);
 

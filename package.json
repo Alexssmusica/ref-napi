@@ -5,7 +5,8 @@
   },
   "description": "Turn Buffer instances into \"pointers\"",
   "engines": {
-    "node": ">= 12.22.12"
+    "node": ">= 12.22.12 <= 22.x",
+    "electron": ">= 20.x <= 24.x"
   },
   "keywords": [
     "native",
@@ -34,7 +35,8 @@
   "main": "./lib/ref.js",
   "scripts": {
     "install": "node-gyp-build",
-    "prebuild": "prebuildify --napi --tag-armv"
+    "prebuild": "prebuildify --napi --tag-armv",
+    "prebuild-electron": "prebuildify --napi --tag-armv --runtime electron --target 20.0.0 --target 21.0.0 --target 23.0.0 --target 24.0.0"
   },
   "dependencies": {
     "debug": "^4.4.0",
