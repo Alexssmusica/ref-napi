@@ -1,7 +1,7 @@
 # http://www.appveyor.com/docs/appveyor-yml
 
 image:
-  - Visual Studio 2017
+  - Visual Studio 2022
 
 # Test against these versions of Node.js.
 environment:
@@ -18,7 +18,7 @@ platform:
 
 matrix:  # Node.js v22 is not yet installed on AppVeyor's Windows image for Visual Studio 2022
   allow_failures:
-    - nodejs_version: 20
+    - nodejs_version: 22
 
 # Install scripts. (runs after repo cloning)
 install:
@@ -27,6 +27,7 @@ install:
   - ps: Install-Product node $env:nodejs_version $env:platform
   - node -p process.arch
   - node -p process.version
+  - python -m pip install setuptools 
   - npm install --build-from-source
 
 # Post-install test scripts.
