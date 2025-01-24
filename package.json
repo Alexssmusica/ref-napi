@@ -42,7 +42,7 @@
     "debug": "^4.4.0",
     "get-symbol-from-current-process-h": "^1.0.2",
     "node-addon-api": "^8.3.0",
-    "node-gyp-build": "^4.2.1"
+    "node-gyp-build": "^4.8.4"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^11.1.0",
