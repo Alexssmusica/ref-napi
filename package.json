@@ -24,7 +24,7 @@
     "64",
     "napi"
   ],
-  "version": "4.0.14",
+  "version": "4.0.15",
   "license": "MIT",
   "author": "Anna Henningsen <anna@addaleax.net>",
   "repository": {
@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "debug": "^4.4.0",
+    "electron-bindings": "^1.0.2",
     "get-symbol-from-current-process-h": "^1.0.2",
     "node-addon-api": "^8.3.0",
     "node-gyp-build": "^4.8.4"
